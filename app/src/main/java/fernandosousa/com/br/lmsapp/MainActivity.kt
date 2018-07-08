@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
         imagem.setImageResource(R.drawable.imagem_login)
 
         val texto = findViewById<TextView>(R.id.texto_login)
-        texto.setText(R.string.mensagem_login)
+        texto.text = getString(R.string.mensagem_login)
 
 
         val botaoLogin = findViewById<Button>(R.id.botao_login)
