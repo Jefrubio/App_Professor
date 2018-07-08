@@ -55,9 +55,17 @@ class MainActivity : DebugActivity() {
         intent.putExtra("numero", 10)
 
         // fazer a chamada
-        startActivity(intent)
+        //startActivity(intent)
 
+        // fazer a chamada esperando resultado
+        startActivityForResult(intent, 1)
 
+    }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode == 1) {
+            val result = data?.getStringExtra("result")
+            Toast.makeText(context, "$result", Toast.LENGTH_LONG).show()
+        }
     }
 }
