@@ -55,17 +55,16 @@ class TelaInicialActivity : DebugActivity() {
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         // infla o menu com os botões da ActionBar
         menuInflater.inflate(R.menu.menu_main, menu)
-        val item  = menu?.findItem(R.id.action_buscar);
-        val searchView = item?.actionView as SearchView
-        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+
+        (menu?.findItem(R.id.action_buscar)?.actionView as SearchView).setOnQueryTextListener(object : SearchView.OnQueryTextListener {
 
             override fun onQueryTextChange(newText: String): Boolean {
-                Toast.makeText(context, "$newText", Toast.LENGTH_SHORT).show()
+                // ação enquanto está digitando
                 return false
             }
 
             override fun onQueryTextSubmit(query: String): Boolean {
-                Toast.makeText(context, "$query", Toast.LENGTH_SHORT).show()
+                // ação  quando terminou de buscar e enviou
                 return false
             }
 
