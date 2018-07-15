@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
+import android.support.v7.widget.SearchView
 import android.widget.TextView
 import android.widget.Toast
 
@@ -54,6 +55,21 @@ class TelaInicialActivity : DebugActivity() {
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         // infla o menu com os botões da ActionBar
         menuInflater.inflate(R.menu.menu_main, menu)
+        val item  = menu?.findItem(R.id.action_buscar);
+        val searchView = item?.actionView as SearchView
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+
+            override fun onQueryTextChange(newText: String): Boolean {
+                Toast.makeText(context, "$newText", Toast.LENGTH_SHORT).show()
+                return false
+            }
+
+            override fun onQueryTextSubmit(query: String): Boolean {
+                Toast.makeText(context, "$query", Toast.LENGTH_SHORT).show()
+                return false
+            }
+
+        })
         return true
     }
 
@@ -75,4 +91,6 @@ class TelaInicialActivity : DebugActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
+
+
 }
