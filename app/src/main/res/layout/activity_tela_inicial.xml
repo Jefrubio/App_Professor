@@ -1,23 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layourMenuLateral"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-    <LinearLayout
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <!--Conteúdo da tela-->
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="#aaaaaa">
+            <TextView
+                android:id="@+id/mensagemInicial"
+                android:layout_width="match_parent"
+                android:layout_height="500dp"
+                android:text="TextView" />
+
+            <Button
+                android:id="@+id/botaoSair"
+                android:layout_width="match_parent"
+                android:layout_height="500dp"
+                android:text="Sair" />
+        </LinearLayout>
+    </ScrollView>
+
+    <!--Menu lateral-->
+    <android.support.design.widget.NavigationView
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="#aaaaaa">
+        android:id="@+id/menu_lateral"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/menu_lateral_cabecalho"
+        app:menu="@menu/menu_lateral"
+        android:layout_gravity="start"
+        >
 
-        <TextView
-            android:id="@+id/mensagemInicial"
-            android:layout_width="match_parent"
-            android:layout_height="500dp"
-            android:text="TextView" />
 
-        <Button
-            android:id="@+id/botaoSair"
-            android:layout_width="match_parent"
-            android:layout_height="500dp"
-            android:text="Sair" />
-    </LinearLayout>
-</ScrollView>
+
+    </android.support.design.widget.NavigationView>
+
+</android.support.v4.widget.DrawerLayout>
