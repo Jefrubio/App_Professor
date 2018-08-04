@@ -8,27 +8,37 @@
     android:fitsSystemWindows="true">
 
     <!--Conteúdo da tela-->
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:app="http://schemas.android.com/apk/res-auto"
+		xmlns:tools="http://schemas.android.com/tools"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical"
+		tools:context=".TelaInicialActivity">
+		<include layout="@layout/toolbar"/>
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:background="#aaaaaa">
+
+            android:padding="16dp">
             <TextView
                 android:id="@+id/mensagemInicial"
                 android:layout_width="match_parent"
-                android:layout_height="500dp"
+                android:layout_height="wrap_content"
                 android:text="TextView" />
 
             <Button
                 android:id="@+id/botaoSair"
                 android:layout_width="match_parent"
-                android:layout_height="500dp"
+                android:layout_height="1000dp"
                 android:text="Sair" />
         </LinearLayout>
     </ScrollView>
+</LinearLayout>
+
 
     <!--Menu lateral-->
     <android.support.design.widget.NavigationView
@@ -46,3 +56,4 @@
     </android.support.design.widget.NavigationView>
 
 </android.support.v4.widget.DrawerLayout>
+
