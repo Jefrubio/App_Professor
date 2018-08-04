@@ -17,7 +17,7 @@ import android.support.v7.widget.Toolbar
 import android.widget.TextView
 import android.widget.Toast
 
-class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSelectedListener {
+class TelaInicialActivity : DebugActivity() {
 
     private val context: Context get() = this
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,45 +51,12 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
         supportActionBar?.title = "Disciplinas"
 
         // up navigation
-        // supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        configuraMenuLateral()
+
     }
 
-    // configuraçao do navigation Drawer
-    private fun configuraMenuLateral() {
-        var menuLateral = findViewById<DrawerLayout>(R.id.layourMenuLateral)
-        var toogle = ActionBarDrawerToggle(this, menuLateral, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
-        toogle.syncState()
-        val navigationView = findViewById<NavigationView>(R.id.menu_lateral)
-        navigationView.setNavigationItemSelectedListener(this)
-    }
 
-    // método que deve ser implementado quando a activity implementa a interface NavigationView.OnNavigationItemSelectedListener
-    override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.nav_disciplina_1 -> {
-                Toast.makeText(this, "Clicou Disciplina 1", Toast.LENGTH_SHORT).show()
-            }
-
-            R.id.nav_disciplina_2 -> {
-                Toast.makeText(this, "Clicou Disciplina 2", Toast.LENGTH_SHORT).show()
-            }
-
-            R.id.nav_disciplina_3 -> {
-                Toast.makeText(this, "Clicou Disciplina 3", Toast.LENGTH_SHORT).show()
-            }
-
-            R.id.nav_localizacao -> {
-                Toast.makeText(this, "Clicou Disciplina 1", Toast.LENGTH_SHORT).show()
-            }
-        }
-
-        // fecha menu depois de tratar o evento
-        val drawer = findViewById<DrawerLayout>(R.id.layourMenuLateral)
-        drawer.closeDrawer(GravityCompat.START)
-        return true
-    }
 
     fun cliqueSair() {
         val returnIntent = Intent();
