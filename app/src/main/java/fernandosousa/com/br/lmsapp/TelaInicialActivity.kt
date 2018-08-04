@@ -9,8 +9,10 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
 import android.support.v7.widget.SearchView
+import android.support.v7.widget.Toolbar
 import android.widget.TextView
 import android.widget.Toast
+
 
 class TelaInicialActivity : DebugActivity() {
 
@@ -37,6 +39,11 @@ class TelaInicialActivity : DebugActivity() {
         val botaoSair = findViewById<Button>(R.id.botaoSair)
         botaoSair.setOnClickListener {cliqueSair()}
 
+        // colocar toolbar
+        var toolbar = findViewById<Toolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar)
+
+
         // alterar título da ActionBar
         supportActionBar?.title = "Disciplinas"
 
@@ -56,19 +63,19 @@ class TelaInicialActivity : DebugActivity() {
         // infla o menu com os botões da ActionBar
         menuInflater.inflate(R.menu.menu_main, menu)
         // vincular evento de buscar
-        (menu?.findItem(R.id.action_buscar)?.actionView as SearchView).setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-
-            override fun onQueryTextChange(newText: String): Boolean {
-                // ação enquanto está digitando
-                return false
-            }
-
-            override fun onQueryTextSubmit(query: String): Boolean {
-                // ação  quando terminou de buscar e enviou
-                return false
-            }
-
-        })
+//        (menu?.findItem(R.id.action_buscar)?.actionView as SearchView).setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+//
+//            override fun onQueryTextChange(newText: String): Boolean {
+//                // ação enquanto está digitando
+//                return false
+//            }
+//
+//            override fun onQueryTextSubmit(query: String): Boolean {
+//                // ação  quando terminou de buscar e enviou
+//                return false
+//            }
+//
+//        })
         return true
     }
 
