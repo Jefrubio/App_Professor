@@ -1,5 +1,5 @@
 <resources>
-    <!-- Base application theme. -->
+    <!-- Tema com Action Bar. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Cor primária da ActionBar -->
         <item name="colorPrimary">@color/colorPrimary</item>
@@ -7,5 +7,10 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <!-- Cor de destaque -->
         <item name="colorAccent">@color/colorAccent</item>
+    </style>
+    <!-- Tema com Toolbar. -->
+    <style name="AppTheme.Toolbar" parent="AppTheme">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
     </style>
 </resources>
