@@ -57,19 +57,23 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
         configuraMenuLateral()
     }
 
-    // configuraçao do navigation Drawer
+    // configuraçao do navigation Drawer com a toolbar
     private fun configuraMenuLateral() {
         var toolbar = findViewById<Toolbar>(R.id.toolbar)
         var menuLateral = findViewById<DrawerLayout>(R.id.layourMenuLateral)
+
+        // ícone de menu (hamburger) para mostrar o menu
         var toogle = ActionBarDrawerToggle(this, menuLateral, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
 
         menuLateral.addDrawerListener(toogle)
         toogle.syncState()
+
         val navigationView = findViewById<NavigationView>(R.id.menu_lateral)
         navigationView.setNavigationItemSelectedListener(this)
     }
 
     // método que deve ser implementado quando a activity implementa a interface NavigationView.OnNavigationItemSelectedListener
+    // para tratar os eventos de clique no menu lateral
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.nav_diciplinas -> {
