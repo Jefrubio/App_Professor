@@ -2,19 +2,20 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_disciplina_1"
+            android:id="@+id/nav_diciplinas"
             android:icon="@drawable/ic_disciplina_black"
-            android:title="Disciplina 1" />
+            android:title="Disciplinas"
+            android:checked="true"/>
 
         <item
-            android:id="@+id/nav_disciplina_2"
-            android:icon="@drawable/ic_disciplina_black"
-            android:title="Disciplina 1" />
+            android:id="@+id/nav_forum"
+            android:icon="@drawable/ic_forum_black"
+            android:title="Forum" />
 
         <item
-            android:id="@+id/nav_disciplina_3"
-            android:icon="@drawable/ic_disciplina_black"
-            android:title="Disciplina 3" />
+            android:id="@+id/nav_mensagens"
+            android:icon="@drawable/ic_chat_black"
+            android:title="Mensagens" />
 
         <item
             android:id="@+id/nav_localizacao"
@@ -22,8 +23,8 @@
             android:title="Localização" />
 
         <item
-            android:id="@+id/nav_cconfig"
+            android:id="@+id/nav_config"
             android:icon="@drawable/ic_configuracoes_black"
-            android:title="Localização" />
+            android:title="Configurações" />
     </group>
 </menu>

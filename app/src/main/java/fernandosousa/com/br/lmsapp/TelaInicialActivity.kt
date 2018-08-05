@@ -20,6 +20,7 @@ import android.widget.Toast
 class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     private val context: Context get() = this
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tela_inicial)
@@ -51,15 +52,18 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
         supportActionBar?.title = "Disciplinas"
 
         // up navigation
-        // supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         configuraMenuLateral()
     }
 
     // configuraçao do navigation Drawer
     private fun configuraMenuLateral() {
+        var toolbar = findViewById<Toolbar>(R.id.toolbar)
         var menuLateral = findViewById<DrawerLayout>(R.id.layourMenuLateral)
-        var toogle = ActionBarDrawerToggle(this, menuLateral, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+        var toogle = ActionBarDrawerToggle(this, menuLateral, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+
+        menuLateral.addDrawerListener(toogle)
         toogle.syncState()
         val navigationView = findViewById<NavigationView>(R.id.menu_lateral)
         navigationView.setNavigationItemSelectedListener(this)
@@ -68,20 +72,24 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
     // método que deve ser implementado quando a activity implementa a interface NavigationView.OnNavigationItemSelectedListener
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.nav_disciplina_1 -> {
-                Toast.makeText(this, "Clicou Disciplina 1", Toast.LENGTH_SHORT).show()
+            R.id.nav_diciplinas -> {
+                Toast.makeText(this, "Clicou Disciplinas", Toast.LENGTH_SHORT).show()
             }
 
-            R.id.nav_disciplina_2 -> {
-                Toast.makeText(this, "Clicou Disciplina 2", Toast.LENGTH_SHORT).show()
+            R.id.nav_mensagens -> {
+                Toast.makeText(this, "Clicou Mensagens", Toast.LENGTH_SHORT).show()
             }
 
-            R.id.nav_disciplina_3 -> {
-                Toast.makeText(this, "Clicou Disciplina 3", Toast.LENGTH_SHORT).show()
+            R.id.nav_forum -> {
+                Toast.makeText(this, "Clicou Forum", Toast.LENGTH_SHORT).show()
             }
 
             R.id.nav_localizacao -> {
-                Toast.makeText(this, "Clicou Disciplina 1", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Clicou Localização", Toast.LENGTH_SHORT).show()
+            }
+
+            R.id.nav_config -> {
+                Toast.makeText(this, "Clicou Config", Toast.LENGTH_SHORT).show()
             }
         }
 
