@@ -9,17 +9,18 @@ import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
 import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.ActionBarDrawerToggle
+import android.support.v7.widget.*
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
-import android.support.v7.widget.SearchView
-import android.support.v7.widget.Toolbar
 import android.widget.TextView
 import android.widget.Toast
 
 class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     private val context: Context get() = this
+    private var disciplinas = listOf<Disciplina>()
+    var recyclerDisciplinas: RecyclerView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,11 +38,11 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
         Toast.makeText(context, "Parâmetro: $nome", Toast.LENGTH_LONG).show()
         Toast.makeText(context, "Numero: $numero", Toast.LENGTH_LONG).show()
 
-        val mensagem = findViewById<TextView>(R.id.mensagemInicial)
-        mensagem.text = "Bem vindo $nome"
+//        val mensagem = findViewById<TextView>(R.id.mensagemInicial)
+//        mensagem.text = "Bem vindo $nome"
 
-        val botaoSair = findViewById<Button>(R.id.botaoSair)
-        botaoSair.setOnClickListener {cliqueSair()}
+//        val botaoSair = findViewById<Button>(R.id.botaoSair)
+//        botaoSair.setOnClickListener {cliqueSair()}
 
         // colocar toolbar
         var toolbar = findViewById<Toolbar>(R.id.toolbar)
@@ -55,6 +56,27 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         configuraMenuLateral()
+
+        // configurar cardview
+
+        recyclerDisciplinas = findViewById<RecyclerView>(R.id.recyclerDisciplinas)
+        recyclerDisciplinas?.layoutManager = LinearLayoutManager(context)
+        recyclerDisciplinas?.itemAnimator = DefaultItemAnimator()
+        recyclerDisciplinas?.setHasFixedSize(true)
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        taskDisciplinas()
+    }
+
+    fun taskDisciplinas() {
+        this.disciplinas = DisciplinaService.getDisciplinas(context)
+
+        // atualizar lista
+        recyclerDisciplinas?.adapter = DisciplinaAdapter(disciplinas,
+                {disciplina: Disciplina -> Toast.makeText(context, "Clicou disciplina", Toast.LENGTH_SHORT).show() })
     }
 
     // configuraçao do navigation Drawer com a toolbar
