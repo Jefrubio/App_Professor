@@ -9,17 +9,18 @@ import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
 import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.ActionBarDrawerToggle
+import android.support.v7.widget.*
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
-import android.support.v7.widget.SearchView
-import android.support.v7.widget.Toolbar
 import android.widget.TextView
 import android.widget.Toast
 
 class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     private val context: Context get() = this
+    private var disciplinas = listOf<Disciplina>()
+    var recyclerDisciplinas: RecyclerView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,9 +28,10 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
 
         // acessar parametros da intnet
         // intent é um atributo herdado de Activity
-        val args = intent.extras
+        val args:Bundle? = intent.extras
         // recuperar o parâmetro do tipo String
-        val nome = args.getString("nome")
+
+        val nome = args?.getString("nome")
 
         // recuperar parâmetro simplificado
         val numero = intent.getIntExtra("nome",0)
@@ -37,16 +39,9 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
         Toast.makeText(context, "Parâmetro: $nome", Toast.LENGTH_LONG).show()
         Toast.makeText(context, "Numero: $numero", Toast.LENGTH_LONG).show()
 
-        val mensagem = findViewById<TextView>(R.id.mensagemInicial)
-        mensagem.text = "Bem vindo $nome"
-
-        val botaoSair = findViewById<Button>(R.id.botaoSair)
-        botaoSair.setOnClickListener {cliqueSair()}
-
         // colocar toolbar
         var toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
-
 
         // alterar título da ActionBar
         supportActionBar?.title = "Disciplinas"
@@ -55,6 +50,33 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         configuraMenuLateral()
+
+        // configurar cardview
+        recyclerDisciplinas = findViewById<RecyclerView>(R.id.recyclerDisciplinas)
+        recyclerDisciplinas?.layoutManager = LinearLayoutManager(context)
+        recyclerDisciplinas?.itemAnimator = DefaultItemAnimator()
+        recyclerDisciplinas?.setHasFixedSize(true)
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        // task para recuperar as disciplinas
+        taskDisciplinas()
+    }
+
+    fun taskDisciplinas() {
+        this.disciplinas = DisciplinaService.getDisciplinas(context)
+        // atualizar lista
+        recyclerDisciplinas?.adapter = DisciplinaAdapter(disciplinas) {onClickDisciplina(it)}
+    }
+
+    // tratamento do evento de clicar em uma disciplina
+    fun onClickDisciplina(disciplina: Disciplina) {
+        Toast.makeText(context, "Clicou disciplina ${disciplina.nome}", Toast.LENGTH_SHORT).show()
+        val intent = Intent(context, DisciplinaActivity::class.java)
+        intent.putExtra("disciplina", disciplina)
+        startActivity(intent)
     }
 
     // configuraçao do navigation Drawer com a toolbar
