@@ -13,7 +13,7 @@ object DisciplinaService {
             d.nome = "Disciplina $i"
             d.ementa = "Ementa Disciplina $i"
             d.professor = "Professor Disciplina $i"
-            d.foto = "https://raw.githubusercontent.com/fesousa/aula-android-kotlin/LMSApp_06_ListasCards/app/src/main/res/drawable-v24/ddm.png"
+            d.foto = "https://cdn.pixabay.com/photo/2018/01/18/20/42/pencil-3091204_1280.jpg"
             disciplinas.add(d)
         }
 

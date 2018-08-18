@@ -21,26 +21,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <!--<LinearLayout-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="match_parent"-->
-                <!--android:orientation="vertical"-->
-
-                <!--android:padding="16dp">-->
-
-                <!--<TextView-->
-                    <!--android:id="@+id/mensagemInicial"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:text="TextView" />-->
-
-                <!--<Button-->
-                    <!--android:id="@+id/botaoSair"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="1000dp"-->
-                    <!--android:text="Sair" />-->
-            <!--</LinearLayout>-->
-
             <!-- Colocar cardview com as disciplinas-->
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recyclerDisciplinas"
@@ -53,8 +33,6 @@
                 android:listSelector="@android:color/transparent"
                 android:scrollbarStyle="outsideOverlay"
                 android:scrollbars="vertical">
-
-
             </android.support.v7.widget.RecyclerView>
 
         </ScrollView>

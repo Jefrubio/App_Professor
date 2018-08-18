@@ -1,6 +1,8 @@
 package fernandosousa.com.br.lmsapp
 
-class Disciplina {
+import java.io.Serializable
+
+class Disciplina : Serializable {
 
     var id:Long = 0
     var nome = ""
