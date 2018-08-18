@@ -54,10 +54,11 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
         // up navigation
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
+        // configuração do menu lateral
         configuraMenuLateral()
     }
 
-    // configuraçao do navigation Drawer com a toolbar
+    // configuração do navigation Drawer com a toolbar
     private fun configuraMenuLateral() {
         var toolbar = findViewById<Toolbar>(R.id.toolbar)
         var menuLateral = findViewById<DrawerLayout>(R.id.layourMenuLateral)
