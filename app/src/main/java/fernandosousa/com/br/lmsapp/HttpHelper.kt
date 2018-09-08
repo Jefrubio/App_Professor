@@ -19,7 +19,7 @@ object HttpHelper {
     fun get(url:String): String {
         Log.d(TAG, "HttpHelper.get: $url")
         val request = Request.Builder().url(url).get().build()
-        return getJSON(request)
+        return getJson(request)
     }
 
     // POST JSON
@@ -27,19 +27,19 @@ object HttpHelper {
         Log.d(TAG, "HttpHelper.post: $url > $json")
         val body = RequestBody.create(JSON, json)
         val request = Request.Builder().url(url).post(body).build()
-        return getJSON(request)
+        return getJson(request)
     }
 
     // DELETE
     fun delete(url: String): String {
         Log.d(TAG, "HttpHelper.delete: $url")
         val request = Request.Builder().url(url).delete().build()
-        return getJSON(request)
+        return getJson(request)
     }
 
 
     // Lê resposta em formato JSON
-    private fun getJSON(request: Request?): String {
+    private fun getJson(request: Request?): String {
         val response = client.newCall(request).execute()
         val body = response.body()
         if (body != null) {

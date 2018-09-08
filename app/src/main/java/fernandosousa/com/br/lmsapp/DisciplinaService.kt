@@ -16,14 +16,25 @@ object DisciplinaService {
 
     fun getDisciplinas (context: Context): List<Disciplina> {
         val url = "$host/disciplinas"
-        val json = URL(url).readText()
+        val json = HttpHelper.get(url)
+        return parserJson(json)
+    }
 
+    fun save(disciplina: Disciplina): Response {
+        val json = HttpHelper.post("$host/disciplinas", disciplina.toJson())
+        return parserJson(json)
+    }
+
+    fun delete(disciplina: Disciplina): Response {
+        Log.d(TAG, disciplina.id.toString())
+        val url = "$host/disciplinas/${disciplina.id}"
+        val json = HttpHelper.delete(url)
         Log.d(TAG, json)
         return parserJson(json)
     }
 
-    fun parserJson(json: String): List<Disciplina> {
-        val type = object : TypeToken<List<Disciplina>>(){}.type
-        return Gson().fromJson<List<Disciplina>>(json, type)
+    inline fun <reified T> parserJson(json: String): T {
+        val type = object : TypeToken<T>(){}.type
+        return Gson().fromJson<T>(json, type)
     }
 }

@@ -3,18 +3,14 @@ package fernandosousa.com.br.lmsapp
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
 import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.widget.*
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Button
-import android.widget.TextView
 import android.widget.Toast
 
 class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -22,6 +18,8 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
     private val context: Context get() = this
     private var disciplinas = listOf<Disciplina>()
     var recyclerDisciplinas: RecyclerView? = null
+    private var REQUEST_CADASTRO = 1
+    private var REQUEST_REMOVE= 2
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -75,11 +73,12 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
                 this.disciplinas = DisciplinaService.getDisciplinas(context)
                 runOnUiThread {
                     // Código para atualizar a UI com a lista de disciplinas
-                    recyclerDisciplinas?.adapter = DisciplinaAdapter(disciplinas) { onClickDisciplina(it) }
+                    recyclerDisciplinas?.adapter = DisciplinaAdapter(this.disciplinas) { onClickDisciplina(it) }
                 }
             }.start()
         }
         else {
+
             Toast.makeText(context, "Sem internet disponível....", Toast.LENGTH_SHORT).show()
         }
     }
@@ -89,7 +88,7 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
         Toast.makeText(context, "Clicou disciplina ${disciplina.nome}", Toast.LENGTH_SHORT).show()
         val intent = Intent(context, DisciplinaActivity::class.java)
         intent.putExtra("disciplina", disciplina)
-        startActivity(intent)
+        startActivityForResult(intent, REQUEST_REMOVE)
     }
 
     // configuraçao do navigation Drawer com a toolbar
@@ -177,12 +176,23 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
             Toast.makeText(context, "Botão de atualizar", Toast.LENGTH_LONG).show()
         } else if (id == R.id.action_config) {
             Toast.makeText(context, "Botão de configuracoes", Toast.LENGTH_LONG).show()
+        } else if (id == R.id.action_adicionar) {
+            // iniciar activity de cadastro
+            val intent = Intent(context, DisciplinaCadastroActivity::class.java)
+            startActivityForResult(intent, REQUEST_CADASTRO)
         }
         // botão up navigation
         else if (id == android.R.id.home) {
             finish()
         }
         return super.onOptionsItemSelected(item)
+    }
+    // esperar o retorno do cadastro da disciplina
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode == REQUEST_CADASTRO || requestCode == REQUEST_REMOVE ) {
+            // atualizar lista de disciplinas
+            taskDisciplinas()
+        }
     }
 
 
