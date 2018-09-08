@@ -10,6 +10,7 @@ import android.support.v4.view.GravityCompat
 import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.widget.*
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
@@ -31,13 +32,13 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
         val args:Bundle? = intent.extras
         // recuperar o parâmetro do tipo String
 
-        val nome = args?.getString("nome")
+        //val nome = args?.getString("nome")
 
         // recuperar parâmetro simplificado
-        val numero = intent.getIntExtra("nome",0)
+        //val numero = intent.getIntExtra("nome",0)
 
-        Toast.makeText(context, "Parâmetro: $nome", Toast.LENGTH_LONG).show()
-        Toast.makeText(context, "Numero: $numero", Toast.LENGTH_LONG).show()
+        //Toast.makeText(context, "Parâmetro: $nome", Toast.LENGTH_LONG).show()
+        //Toast.makeText(context, "Numero: $numero", Toast.LENGTH_LONG).show()
 
         // colocar toolbar
         var toolbar = findViewById<Toolbar>(R.id.toolbar)
@@ -66,9 +67,21 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
     }
 
     fun taskDisciplinas() {
-        this.disciplinas = DisciplinaService.getDisciplinas(context)
-        // atualizar lista
-        recyclerDisciplinas?.adapter = DisciplinaAdapter(disciplinas) {onClickDisciplina(it)}
+        // Criar a Thread
+       if (AndroidUtils.isInternetDisponivel(context)) {
+            Thread {
+                // Código para procurar as disciplinas
+                // que será executado em segundo plano / Thread separada
+                this.disciplinas = DisciplinaService.getDisciplinas(context)
+                runOnUiThread {
+                    // Código para atualizar a UI com a lista de disciplinas
+                    recyclerDisciplinas?.adapter = DisciplinaAdapter(disciplinas) { onClickDisciplina(it) }
+                }
+            }.start()
+        }
+        else {
+            Toast.makeText(context, "Sem internet disponível....", Toast.LENGTH_SHORT).show()
+        }
     }
 
     // tratamento do evento de clicar em uma disciplina
