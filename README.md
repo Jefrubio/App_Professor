@@ -11,6 +11,6 @@ Principais concietos envolvidos:
  - Navigation Drawer
  - Listas e Cards
  - Web Services
- - Armazenmaneto local
+ - Armazenamento local
  
 O código produzido ao final de cada aula está em uma branch separada
