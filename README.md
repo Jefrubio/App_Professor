@@ -13,4 +13,4 @@ Principais concietos envolvidos:
  - Web Services
  - Armazenmaneto local
  
-O código produxido ao final de cada aula está em uma branch
+O código produzido ao final de cada aula está em uma branch separada
