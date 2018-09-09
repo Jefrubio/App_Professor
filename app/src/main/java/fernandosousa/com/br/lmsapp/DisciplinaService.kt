@@ -1,23 +1,40 @@
 package fernandosousa.com.br.lmsapp
 
 import android.content.Context
+import android.util.Log
+import android.widget.Toast
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+import org.json.JSONArray
+import java.net.URL
 
 object DisciplinaService {
 
+    //TROQUE PELO IP DE ONDE ESTÁ O WS
+    val host = "http://192.168.1.24:5000"
+    val TAG = "WS_LMSApp"
+
     fun getDisciplinas (context: Context): List<Disciplina> {
-        val disciplinas = mutableListOf<Disciplina>()
-
-        // criar 10 disciplinas
-        for (i in 1..10) {
-            val d = Disciplina()
-            d.nome = "Disciplina $i"
-            d.ementa = "Ementa Disciplina $i"
-            d.professor = "Professor Disciplina $i"
-            d.foto = "https://cdn.pixabay.com/photo/2018/01/18/20/42/pencil-3091204_1280.jpg"
-            disciplinas.add(d)
-        }
-
-        return disciplinas
+        val url = "$host/disciplinas"
+        val json = HttpHelper.get(url)
+        return parserJson(json)
     }
 
+    fun save(disciplina: Disciplina): Response {
+        val json = HttpHelper.post("$host/disciplinas", disciplina.toJson())
+        return parserJson(json)
+    }
+
+    fun delete(disciplina: Disciplina): Response {
+        Log.d(TAG, disciplina.id.toString())
+        val url = "$host/disciplinas/${disciplina.id}"
+        val json = HttpHelper.delete(url)
+        Log.d(TAG, json)
+        return parserJson(json)
+    }
+
+    inline fun <reified T> parserJson(json: String): T {
+        val type = object : TypeToken<T>(){}.type
+        return Gson().fromJson<T>(json, type)
+    }
 }

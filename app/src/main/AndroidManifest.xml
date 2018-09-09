@@ -3,6 +3,7 @@
     package="fernandosousa.com.br.lmsapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -24,9 +25,11 @@
         <activity
             android:name=".TelaInicialActivity"
             android:theme="@style/AppTheme.Toolbar" />
-        <activity android:name=".DisciplinaActivity"
-            android:theme="@style/AppTheme.Toolbar"
-            android:parentActivityName=".TelaInicialActivity"></activity>
+        <activity
+            android:name=".DisciplinaActivity"
+            android:parentActivityName=".TelaInicialActivity"
+            android:theme="@style/AppTheme.Toolbar" />
+        <activity android:name=".DisciplinaCadastroActivity"></activity>
     </application>
 
 </manifest>
