@@ -1,11 +1,15 @@
 package fernandosousa.com.br.lmsapp
 
+import android.arch.persistence.room.Entity
+import android.arch.persistence.room.PrimaryKey
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import java.io.Serializable
 
+@Entity(tableName = "disciplina")
 class Disciplina : Serializable {
 
+    @PrimaryKey
     var id:Long = 0
     var nome = ""
     var ementa = ""
