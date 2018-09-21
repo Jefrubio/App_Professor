@@ -56,6 +56,8 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
         recyclerDisciplinas?.itemAnimator = DefaultItemAnimator()
         recyclerDisciplinas?.setHasFixedSize(true)
 
+
+
     }
 
     override fun onResume() {
@@ -66,21 +68,17 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
 
     fun taskDisciplinas() {
         // Criar a Thread
-       if (AndroidUtils.isInternetDisponivel(context)) {
-            Thread {
-                // Código para procurar as disciplinas
-                // que será executado em segundo plano / Thread separada
-                this.disciplinas = DisciplinaService.getDisciplinas(context)
-                runOnUiThread {
-                    // Código para atualizar a UI com a lista de disciplinas
-                    recyclerDisciplinas?.adapter = DisciplinaAdapter(this.disciplinas) { onClickDisciplina(it) }
-                }
-            }.start()
-        }
-        else {
 
-            Toast.makeText(context, "Sem internet disponível....", Toast.LENGTH_SHORT).show()
-        }
+        Thread {
+            // Código para procurar as disciplinas
+            // que será executado em segundo plano / Thread separada
+            this.disciplinas = DisciplinaService.getDisciplinas(context)
+            runOnUiThread {
+                // Código para atualizar a UI com a lista de disciplinas
+                recyclerDisciplinas?.adapter = DisciplinaAdapter(this.disciplinas) { onClickDisciplina(it) }
+            }
+        }.start()
+
     }
 
     // tratamento do evento de clicar em uma disciplina
