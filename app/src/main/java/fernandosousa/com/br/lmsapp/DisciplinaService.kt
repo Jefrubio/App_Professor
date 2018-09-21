@@ -15,9 +15,14 @@ object DisciplinaService {
     val TAG = "WS_LMSApp"
 
     fun getDisciplinas (context: Context): List<Disciplina> {
-        val url = "$host/disciplinas"
-        val json = HttpHelper.get(url)
-        return parserJson(json)
+        if (AndroidUtils.isInternetDisponivel(context)) {
+            val url = "$host/disciplinas"
+            val json = HttpHelper.get(url)
+            return parserJson(json)
+        } else {
+            Toast.makeText(context, "Sem internet disponível....", Toast.LENGTH_SHORT).show()
+            return ArrayList<Disciplina>()
+        }
     }
 
     fun save(disciplina: Disciplina): Response {
