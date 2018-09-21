@@ -41,7 +41,6 @@ class MainActivity : DebugActivity() {
         progressBar.visibility = View.INVISIBLE
 
         // procurar pelas preferências, se pediu para guardar usuário e senha
-
         var lembrar = Prefs.getBoolean("lembrar")
         if (lembrar) {
             var lembrarNome  = Prefs.getString("lembrarNome")
@@ -58,22 +57,20 @@ class MainActivity : DebugActivity() {
     }
 
     fun onClickLogin(){
-        val campoUsuario = findViewById<EditText>(R.id.campo_usuario)
-        val campoSenha = findViewById<EditText>(R.id.campo_senha)
-        val valorUsuario = campoUsuario.text.toString()
-        val valorSenha = campoSenha.text.toString()
-        //Toast.makeText(context, "$valorUsuario : $valorSenha", Toast.LENGTH_LONG).show()
 
-        // verificar se é para pembrar nome e senha
-        Prefs.setBoolean("lembrar", checkBoxLogin.isChecked)
+            val valorUsuario = campo_usuario.text.toString()
+            val valorSenha = campo_senha.text.toString()
 
-        if (checkBoxLogin.isChecked) {
-            Prefs.setString("lembrarNome", valorUsuario)
-            Prefs.setString("lembrarSenha", valorSenha)
-        } else{
-            Prefs.setString("lembrarNome", "")
-            Prefs.setString("lembrarSenha", "")
-        }
+            // armazenar valor do checkbox
+            Prefs.setBoolean("lembrar", checkBoxLogin.isChecked)
+            // verificar se é para pembrar nome e senha
+            if (checkBoxLogin.isChecked) {
+                Prefs.setString("lembrarNome", valorUsuario)
+                Prefs.setString("lembrarSenha", valorSenha)
+            } else{
+                Prefs.setString("lembrarNome", "")
+                Prefs.setString("lembrarSenha", "")
+            }
 
 
         // criar intent

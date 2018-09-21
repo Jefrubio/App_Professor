@@ -15,7 +15,7 @@ class LMSApplication: Application() {
         private var appInstance: LMSApplication?  = null
         fun getInstance(): LMSApplication {
             if (appInstance == null) {
-                throw IllegalStateException("Configural application no Android Manifest")
+                throw IllegalStateException("Configurar application no Android Manifest")
             }
             return appInstance!!
         }

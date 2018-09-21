@@ -9,9 +9,9 @@ object DatabaseManager {
     init {
         val appContext = LMSApplication.getInstance().applicationContext
         dbInstance = Room.databaseBuilder(
-                appContext,
-                LMSDatabase::class.java,
-                "lms.sqlite"
+                appContext, // contexto global
+                LMSDatabase::class.java, // Referência da classe do banco
+                "lms.sqlite" // nome do arquivo do banco
         ).build()
     }
 
