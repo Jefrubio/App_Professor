@@ -66,6 +66,7 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
         taskDisciplinas()
     }
 
+
     fun taskDisciplinas() {
         // Criar a Thread
 
@@ -76,9 +77,17 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
             runOnUiThread {
                 // Código para atualizar a UI com a lista de disciplinas
                 recyclerDisciplinas?.adapter = DisciplinaAdapter(this.disciplinas) { onClickDisciplina(it) }
+                enviaNotificacao(this.disciplinas.get(0))
+
             }
         }.start()
 
+    }
+
+    fun enviaNotificacao(disciplina: Disciplina) {
+        val intent = Intent(this, DisciplinaActivity::class.java)
+        intent.putExtra("disciplina", disciplina)
+        NotificationUtil.create(this, 1, intent, "LMSApp", "Você tem nova atividade na ${disciplina.nome}")
     }
 
     // tratamento do evento de clicar em uma disciplina

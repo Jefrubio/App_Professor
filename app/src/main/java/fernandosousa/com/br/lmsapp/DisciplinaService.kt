@@ -12,7 +12,7 @@ import java.net.URL
 object DisciplinaService {
 
     //TROQUE PELO IP DE ONDE ESTÁ O WS
-    val host = "http://192.168.15.11:5000"
+    val host = "http://fesousa.pythonanywhere.com"
     val TAG = "WS_LMSApp"
 
     fun getDisciplinas (context: Context): List<Disciplina> {
