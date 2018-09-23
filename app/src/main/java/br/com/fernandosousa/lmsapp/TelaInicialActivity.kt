@@ -1,4 +1,4 @@
-package fernandosousa.com.br.lmsapp
+package br.com.fernandosousa.lmsapp
 
 import android.app.Activity
 import android.content.Context
@@ -85,6 +85,7 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
     }
 
     fun enviaNotificacao(disciplina: Disciplina) {
+        NotificationUtil.createChannel(this)
         val intent = Intent(this, DisciplinaActivity::class.java)
         intent.putExtra("disciplina", disciplina)
         NotificationUtil.create(this, 1, intent, "LMSApp", "Você tem nova atividade na ${disciplina.nome}")
