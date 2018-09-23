@@ -1,4 +1,4 @@
-package fernandosousa.com.br.lmsapp
+package br.com.fernandosousa.lmsapp
 
 import android.app.Activity
 import android.content.Context
