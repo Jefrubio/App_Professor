@@ -6,7 +6,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
-        android:name="br.com.fernandosousa.lmsapp.LMSApplication"
+        android:name=".LMSApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="br.com.fernandosousa.lmsapp.MainActivity"
+            android:name=".MainActivity"
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,15 +22,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="br.com.fernandosousa.lmsapp.DebugActivity" />
+        <activity android:name=".DebugActivity" />
         <activity
-            android:name="br.com.fernandosousa.lmsapp.TelaInicialActivity"
+            android:name=".TelaInicialActivity"
             android:theme="@style/AppTheme.Toolbar" />
         <activity
-            android:name="br.com.fernandosousa.lmsapp.DisciplinaActivity"
-            android:parentActivityName="br.com.fernandosousa.lmsapp.TelaInicialActivity"
+            android:name=".DisciplinaActivity"
+            android:parentActivityName=".TelaInicialActivity"
             android:theme="@style/AppTheme.Toolbar" />
-        <activity android:name="br.com.fernandosousa.lmsapp.DisciplinaCadastroActivity"></activity>
+        <activity android:name=".DisciplinaCadastroActivity"></activity>
     </application>
 
 </manifest>
