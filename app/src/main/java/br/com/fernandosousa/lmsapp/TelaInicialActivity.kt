@@ -1,9 +1,8 @@
-package fernandosousa.com.br.lmsapp
+package br.com.fernandosousa.lmsapp
 
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
@@ -12,8 +11,6 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.widget.*
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Button
-import android.widget.TextView
 import android.widget.Toast
 
 class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSelectedListener {
