@@ -1,4 +1,4 @@
-package fernandosousa.com.br.lmsapp
+package br.com.fernandosousa.lmsapp
 
 import android.arch.persistence.room.Dao
 import android.arch.persistence.room.Delete
