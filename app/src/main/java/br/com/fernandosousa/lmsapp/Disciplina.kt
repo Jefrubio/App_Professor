@@ -1,6 +1,5 @@
-package fernandosousa.com.br.lmsapp
+package br.com.fernandosousa.lmsapp
 
-import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import java.io.Serializable
 

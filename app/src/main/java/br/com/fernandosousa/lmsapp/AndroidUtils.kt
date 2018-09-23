@@ -1,4 +1,4 @@
-package fernandosousa.com.br.lmsapp
+package br.com.fernandosousa.lmsapp
 
 import android.content.Context
 import android.net.ConnectivityManager

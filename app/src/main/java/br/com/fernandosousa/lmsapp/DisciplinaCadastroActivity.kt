@@ -1,10 +1,8 @@
-package fernandosousa.com.br.lmsapp
+package br.com.fernandosousa.lmsapp
 
-import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_cadastro_disciplina.*
-import kotlinx.android.synthetic.main.login.*
 
 class DisciplinaCadastroActivity : AppCompatActivity() {
 
