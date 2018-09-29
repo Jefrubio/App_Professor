@@ -85,9 +85,13 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
     }
 
     fun enviaNotificacao(disciplina: Disciplina) {
+        // Criar canal de comunicação
         NotificationUtil.createChannel(this)
+        // Intent para abrir tela quando clicar na notificação
         val intent = Intent(this, DisciplinaActivity::class.java)
+        // parâmetros extras
         intent.putExtra("disciplina", disciplina)
+        // Disparar notificação
         NotificationUtil.create(this, 1, intent, "LMSApp", "Você tem nova atividade na ${disciplina.nome}")
     }
 
