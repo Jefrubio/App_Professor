@@ -22,7 +22,7 @@ object HttpHelper {
         return getJson(request)
     }
 
-    // GET
+    // GET Disciplina
     fun get(url:String, id:Long): String {
         Log.d(TAG, "HttpHelper.get: $url")
         val request = Request.Builder().url("$url/$id").get().build()
