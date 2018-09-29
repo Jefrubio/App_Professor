@@ -24,7 +24,8 @@ class DisciplinaActivity : DebugActivity() {
         setContentView(R.layout.activity_disciplina)
 
         // recuperar onjeto de Disciplina da Intent
-        disciplina = intent.getSerializableExtra("disciplina") as Disciplina
+        if (intent.getSerializableExtra("disciplina") is Disciplina)
+            disciplina = intent.getSerializableExtra("disciplina") as Disciplina
 
         // configurar título com nome da Disciplina e botão de voltar da Toobar
         // colocar toolbar

@@ -38,7 +38,7 @@ object NotificationUtil {
                 .setContentTitle(titulo)
                 .setContentText(texto)
                 .setSmallIcon(R.mipmap.ic_launcher)
-                .setAutoCancel(false)
+                .setAutoCancel(true)
 
         // disparar notificacao
         val n = builder.build()

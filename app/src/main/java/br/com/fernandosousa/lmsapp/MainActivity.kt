@@ -5,8 +5,11 @@ import android.content.Context
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.*
+import com.google.firebase.iid.FirebaseInstanceId
+import com.google.firebase.messaging.FirebaseMessagingService
 import kotlinx.android.synthetic.main.login.*
 
 class MainActivity : DebugActivity() {
@@ -96,5 +99,11 @@ class MainActivity : DebugActivity() {
             val result = data?.getStringExtra("result")
             Toast.makeText(context, "$result", Toast.LENGTH_LONG).show()
         }
+    }
+
+    // mostrar no log o tokem do firebase
+    override fun onResume() {
+        super.onResume()
+        Log.d("firebase", "Firebase Token: ${Prefs.getString("FB_TOKEN")}")
     }
 }

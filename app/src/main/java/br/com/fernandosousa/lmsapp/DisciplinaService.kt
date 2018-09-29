@@ -34,6 +34,22 @@ object DisciplinaService {
 
     }
 
+    fun getDisciplina (context: Context, id: Long): Disciplina? {
+
+        if (AndroidUtils.isInternetDisponivel(context)) {
+            val url = "$host/disciplinas"
+            val json = HttpHelper.get(url, id)
+            val disciplina = parserJson<Disciplina>(json)
+
+            return disciplina
+        } else {
+            val dao = DatabaseManager.getDisciplinaDAO()
+            val disciplina = dao.getById(id)
+            return disciplina
+        }
+
+    }
+
     fun save(disciplina: Disciplina): Response {
         val json = HttpHelper.post("$host/disciplinas", disciplina.toJson())
         return parserJson(json)
