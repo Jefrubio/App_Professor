@@ -43,12 +43,11 @@ dependencies {
     implementation 'com.squareup.okhttp3:okhttp:3.8.0'
     // Google Room - Banco de dados
     implementation 'android.arch.persistence.room:runtime:1.1.0-alpha3'
+    annotationProcessor 'android.arch.persistence.room:compiler:1.1.0-alpha3'
+    kapt 'android.arch.persistence.room:compiler:1.1.0-alpha3'
     // Firebase
     implementation 'com.google.firebase:firebase-core:16.0.1'
     implementation 'com.google.firebase:firebase-messaging:17.3.2'
-
-    annotationProcessor 'android.arch.persistence.room:compiler:1.1.0-alpha3'
-    kapt 'android.arch.persistence.room:compiler:1.1.0-alpha3'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
