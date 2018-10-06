@@ -68,8 +68,8 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
 
 
     fun taskDisciplinas() {
-        // Criar a Thread
 
+        // Criar a Thread
         Thread {
             // Código para procurar as disciplinas
             // que será executado em segundo plano / Thread separada
@@ -77,6 +77,7 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
             runOnUiThread {
                 // Código para atualizar a UI com a lista de disciplinas
                 recyclerDisciplinas?.adapter = DisciplinaAdapter(this.disciplinas) { onClickDisciplina(it) }
+                // enviar notificação
                 enviaNotificacao(this.disciplinas.get(0))
 
             }
@@ -85,8 +86,6 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
     }
 
     fun enviaNotificacao(disciplina: Disciplina) {
-        // Criar canal de comunicação
-        NotificationUtil.createChannel(this)
         // Intent para abrir tela quando clicar na notificação
         val intent = Intent(this, DisciplinaActivity::class.java)
         // parâmetros extras
