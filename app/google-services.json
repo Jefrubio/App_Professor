@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "841361955735",
+    "firebase_url": "https://lmsapp-e537f.firebaseio.com",
+    "project_id": "lmsapp-e537f",
+    "storage_bucket": "lmsapp-e537f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:841361955735:android:2f6867591d1788d4",
+        "android_client_info": {
+          "package_name": "br.com.fernandosousa.lmsapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "841361955735-r0l2p84ith49mi6k80r9aqrk3ippe7lh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBuyru3fXEHOFG6fmfZ3PgugPtomB22SdY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
