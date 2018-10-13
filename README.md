@@ -5,7 +5,7 @@ Baseado em https://github.com/livroandroid/kotlin-essencial-1ed
 
 Aplicativo de LMS
 
-Principais concietos envolvidos:
+Principais conceitos envolvidos:
  - Básico de Android (Activity, elementos de tela e evento de clique)
  - Activities
  - ActionBar
@@ -13,6 +13,7 @@ Principais concietos envolvidos:
  - Navigation Drawer
  - Listas e Cards
  - Web Services
- - Armazenamento local
+ - Armazenamento local (SharedPreferences e SQLite)
+ - Notificações e Push
  
 O código produzido ao final de cada aula está em uma branch separada
