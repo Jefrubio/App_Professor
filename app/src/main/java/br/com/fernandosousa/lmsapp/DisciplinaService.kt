@@ -18,7 +18,6 @@ object DisciplinaService {
             val json = HttpHelper.get(url)
             return parserJson(json)
         } else {
-            Toast.makeText(context, "Sem internet disponível....", Toast.LENGTH_SHORT).show()
             return ArrayList<Disciplina>()
         }
     }
