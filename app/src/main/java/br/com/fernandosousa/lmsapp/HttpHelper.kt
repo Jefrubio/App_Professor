@@ -22,14 +22,6 @@ object HttpHelper {
         return getJson(request)
     }
 
-    // GET Disciplina
-    fun get(url:String, id:Long): String {
-        Log.d(TAG, "HttpHelper.get: $url")
-        val request = Request.Builder().url("$url/$id").get().build()
-        return getJson(request)
-    }
-
-
     // POST JSON
     fun post(url: String, json: String): String {
         Log.d(TAG, "HttpHelper.post: $url > $json")

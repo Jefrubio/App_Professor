@@ -37,8 +37,8 @@ object DisciplinaService {
     fun getDisciplina (context: Context, id: Long): Disciplina? {
 
         if (AndroidUtils.isInternetDisponivel(context)) {
-            val url = "$host/disciplinas"
-            val json = HttpHelper.get(url, id)
+            val url = "$host/disciplinas/${id}"
+            val json = HttpHelper.get(url)
             val disciplina = parserJson<Disciplina>(json)
 
             return disciplina
