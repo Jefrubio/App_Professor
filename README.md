@@ -1,6 +1,8 @@
 # aula-android-kotlin
 Exemplos para aulas de Desenvolvimento para Dispositivos Móveis, utilizando Android + Kotlin
 
+Baseado em https://github.com/livroandroid/kotlin-essencial-1ed
+
 Aplicativo de LMS
 
 Principais concietos envolvidos:
