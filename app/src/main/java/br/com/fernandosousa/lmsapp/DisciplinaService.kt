@@ -11,8 +11,9 @@ import java.net.URL
 
 object DisciplinaService {
 
-    //TROQUE PELO IP DE ONDE ESTÁ O WS
-    val host = "http://fesousa.pythonanywhere.com"
+    //TROQUE PELA URL DE ONDE ESTÁ O WS
+    // Veja um exemplo no repositório https://github.com/fesousa/aula-android-kotlin-api
+    val host = "http://urldoseuservico.com.br"
     val TAG = "WS_LMSApp"
 
     fun getDisciplinas (context: Context): List<Disciplina> {
